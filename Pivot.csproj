@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Pivot</AssemblyName>
+    <RootNamespace>Pivot</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="BepInEx">
+      <HintPath>..\Libs\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>..\Libs\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\Libs\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\Libs\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\Libs\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\Libs\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\Libs\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\Libs\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\Libs\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>..\Libs\Unity.InputSystem.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tool Import API\ToolImportApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Assets\Poses\*.arm-pose.cs" />
+
+    <EmbeddedResource Include="models\screwdriver-world.glb">
+      <LogicalName>Pivot.Assets.Models.screwdriver-world.glb</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="models\screwdriver-view.glb">
+      <LogicalName>Pivot.Assets.Models.screwdriver-view.glb</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screwdriver-icon.png">
+      <LogicalName>Pivot.Assets.Images.screwdriver-icon.png</LogicalName>
+    </EmbeddedResource>
+
+    <!-- Optional arm pose payloads: build still succeeds when no file exists. -->
+    <EmbeddedResource Include="Assets\Poses\*.arm-pose.cs">
+      <LogicalName>%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
