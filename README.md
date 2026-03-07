@@ -1,6 +1,6 @@
 # Pivot
 
-Pivot now registers its screwdriver through ToolIntegrator (`com.main.toolintegrator`).
+Pivot registers its screwdriver through Tool Import API (`com.main.toolimportapi`).
 
 ## Asset source files used by this project
 
@@ -18,12 +18,12 @@ These files are compiled as embedded resources:
 ## Install
 
 1. Copy `Pivot.dll` into `BepInEx/plugins/Pivot/`.
-2. Copy `ToolIntegrator.dll` into plugins (or install the ToolIntegrator mod).
+2. Ensure `ToolImportApi.dll` is installed in plugins (or install the Tool Import API mod).
 3. Launch game.
 
 ## Runtime behavior
 
-- Pivot registers tool id `pivotmod.screwdriver` via ToolIntegrator.
+- Pivot registers tool id `pivotmod.screwdriver` via Tool Import API.
 - Pivot sets `CacheNamespace` (defaults to `pivotmod`) so cached GLB/PNG files are isolated under `.tool-import-cache/pivotmod`.
 - Pivot currently uses default arm handling (no custom hand grip override).
 - Pivot actions are active only while holding that imported tool.

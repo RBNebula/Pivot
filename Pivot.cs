@@ -4,12 +4,12 @@ using MineMogul.ToolImportApi.Api;
 namespace Pivot;
 
 [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
-[BepInDependency("com.main.toolintegrator", BepInDependency.DependencyFlags.HardDependency)]
+[BepInDependency("com.main.toolimportapi", BepInDependency.DependencyFlags.HardDependency)]
 public sealed class PivotPlugin : BaseUnityPlugin
 {
     public const string PluginGuid = "com.pivot";
     public const string PluginName = "Pivot";
-    public const string PluginVersion = "0.3.0";
+    public const string PluginVersion = "0.3.1";
 
     private const string DefaultModId = "pivotmod";
     private const string DefaultToolId = "screwdriver";
