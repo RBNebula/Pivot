@@ -9,7 +9,7 @@ public sealed class PivotPlugin : BaseUnityPlugin
 {
     public const string PluginGuid = "com.pivot";
     public const string PluginName = "Pivot";
-    public const string PluginVersion = "0.3.1";
+    public const string PluginVersion = "1.0.0";
 
     private const string DefaultModId = "pivotmod";
     private const string DefaultToolId = "screwdriver";
