@@ -3,19 +3,15 @@ using MineMogul.ToolImportApi.Api;
 
 namespace Pivot;
 
-[BepInPlugin(PluginGuid, PluginName, PluginVersion)]
-[BepInDependency("com.main.toolimportapi", BepInDependency.DependencyFlags.HardDependency)]
+[BepInPlugin(ModInfo.PLUGIN_GUID, ModInfo.PLUGIN_NAME, ModInfo.PLUGIN_VERSION)]
+[BepInDependency(ModInfo.TOOL_IMPORT_API_GUID, BepInDependency.DependencyFlags.HardDependency)]
 public sealed class PivotPlugin : BaseUnityPlugin
 {
-    public const string PluginGuid = "com.pivot";
-    public const string PluginName = "Pivot";
-    public const string PluginVersion = "1.0.0";
-
     private const string DefaultModId = "pivotmod";
     private const string DefaultToolId = "screwdriver";
-    private const string WorldModelResourceName = "Pivot.Assets.Models.screwdriver-world.glb";
-    private const string ViewModelResourceName = "Pivot.Assets.Models.screwdriver-view.glb";
-    private const string IconResourceName = "Pivot.Assets.Images.screwdriver-icon.png";
+    private const string WorldModelResourceName = "Pivot.Resources.Models.screwdriver-world.glb";
+    private const string ViewModelResourceName = "Pivot.Resources.Models.screwdriver-view.glb";
+    private const string IconResourceName = "Pivot.Resources.Img.screwdriver-icon.png";
 
     internal static PivotPlugin? Instance;
     internal static ManualLogSource Log = null!;
@@ -53,7 +49,7 @@ public sealed class PivotPlugin : BaseUnityPlugin
         BindConfig();
         if (IsToolActionDebugEnabled)
         {
-            Log.LogInfo($"{PluginName} {PluginVersion} initialized.");
+            Log.LogInfo($"{ModInfo.LOG_PREFIX} {ModInfo.PLUGIN_NAME} {ModInfo.PLUGIN_VERSION} initialized.");
         }
     }
 
@@ -210,7 +206,7 @@ public sealed class PivotPlugin : BaseUnityPlugin
             }
         }
 
-        string fallbackName = activeTool.Name ?? string.Empty;
+        string fallbackName = activeTool.FallbackName ?? string.Empty;
         string expectedToolId = expectedFullToolId.Substring(expectedFullToolId.LastIndexOf('.') + 1);
         return fallbackName.IndexOf(expectedToolId, StringComparison.OrdinalIgnoreCase) >= 0;
     }
@@ -463,7 +459,7 @@ public sealed class PivotPlugin : BaseUnityPlugin
             return;
         }
 
-        string activeName = activeTool.Name ?? "<null>";
+        string activeName = activeTool.FallbackName ?? "<null>";
         if (string.Equals(activeName, _lastMismatchedToolName, StringComparison.Ordinal))
         {
             _nextMismatchLogTime = Time.unscaledTime + 1f;
@@ -479,7 +475,7 @@ public sealed class PivotPlugin : BaseUnityPlugin
     {
         if (IsToolActionDebugEnabled)
         {
-            Log.LogInfo("[Pivot] " + message);
+            Log.LogInfo(ModInfo.LOG_PREFIX + " " + message);
         }
     }
 }

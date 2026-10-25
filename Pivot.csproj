@@ -5,60 +5,80 @@
     <Nullable>enable</Nullable>
     <AssemblyName>Pivot</AssemblyName>
     <RootNamespace>Pivot</RootNamespace>
+    <ResourcesDir>Resources</ResourcesDir>
+    <ResourcesImgDir>$(ResourcesDir)\Img</ResourcesImgDir>
+    <ResourcesAudioDir>$(ResourcesDir)\Audio</ResourcesAudioDir>
+    <ResourcesModelsDir>$(ResourcesDir)\Models</ResourcesModelsDir>
+    <ResourcesPosesDir>$(ResourcesDir)\Poses</ResourcesPosesDir>
+    <ResourcesShadersDir>$(ResourcesDir)\Shaders</ResourcesShadersDir>
+    <ResourcesMaterialsDir>$(ResourcesDir)\Materials</ResourcesMaterialsDir>
+    <ResourcesTexturesDir>$(ResourcesDir)\Textures</ResourcesTexturesDir>
+    <ResourcesDataDir>$(ResourcesDir)\Data</ResourcesDataDir>
   </PropertyGroup>
-
+  <PropertyGroup>
+    <MineMogulDir Condition="'$(MineMogulDir)' == ''">F:\SteamLibrary\steamapps\common\MineMogul</MineMogulDir>
+    <MineMogulManagedDir>$(MineMogulDir)\MineMogul_Data\Managed</MineMogulManagedDir>
+    <MineMogulBepInExCoreDir>$(MineMogulDir)\BepInEx\core</MineMogulBepInExCoreDir>
+    <MineMogulPluginsDir>$(MineMogulDir)\BepInEx\plugins</MineMogulPluginsDir>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BepInEx">
-      <HintPath>..\Libs\BepInEx.dll</HintPath>
+      <HintPath>$(MineMogulBepInExCoreDir)\BepInEx.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="0Harmony">
-      <HintPath>..\Libs\0Harmony.dll</HintPath>
+      <HintPath>$(MineMogulBepInExCoreDir)\0Harmony.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\Libs\Assembly-CSharp.dll</HintPath>
+      <HintPath>$(MineMogulManagedDir)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\Libs\UnityEngine.dll</HintPath>
+      <HintPath>$(MineMogulManagedDir)\UnityEngine.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\Libs\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>$(MineMogulManagedDir)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>..\Libs\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>$(MineMogulManagedDir)\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\Libs\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>$(MineMogulManagedDir)\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>..\Libs\UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath>$(MineMogulManagedDir)\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\Libs\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>$(MineMogulManagedDir)\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="Unity.InputSystem">
-      <HintPath>..\Libs\Unity.InputSystem.dll</HintPath>
+      <HintPath>$(MineMogulManagedDir)\Unity.InputSystem.dll</HintPath>
+      <Private>false</Private>
     </Reference>
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Tool Import API\ToolImportApi.csproj" />
   </ItemGroup>
-
   <ItemGroup>
-    <Compile Remove="Assets\Poses\*.arm-pose.cs" />
-
-    <EmbeddedResource Include="models\screwdriver-world.glb">
-      <LogicalName>Pivot.Assets.Models.screwdriver-world.glb</LogicalName>
+    <Compile Remove="$(ResourcesPosesDir)\*.arm-pose.cs" />
+    <EmbeddedResource Include="$(ResourcesModelsDir)\screwdriver-world.glb">
+      <LogicalName>Pivot.Resources.Models.screwdriver-world.glb</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="models\screwdriver-view.glb">
-      <LogicalName>Pivot.Assets.Models.screwdriver-view.glb</LogicalName>
+    <EmbeddedResource Include="$(ResourcesModelsDir)\screwdriver-view.glb">
+      <LogicalName>Pivot.Resources.Models.screwdriver-view.glb</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="screwdriver-icon.png">
-      <LogicalName>Pivot.Assets.Images.screwdriver-icon.png</LogicalName>
+    <EmbeddedResource Include="$(ResourcesImgDir)\screwdriver-icon.png">
+      <LogicalName>Pivot.Resources.Img.screwdriver-icon.png</LogicalName>
     </EmbeddedResource>
-
     <!-- Optional arm pose payloads: build still succeeds when no file exists. -->
-    <EmbeddedResource Include="Assets\Poses\*.arm-pose.cs">
+    <EmbeddedResource Include="$(ResourcesPosesDir)\*.arm-pose.cs">
       <LogicalName>%(Filename)%(Extension)</LogicalName>
     </EmbeddedResource>
   </ItemGroup>

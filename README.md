@@ -6,9 +6,13 @@ Pivot registers its screwdriver through Tool Import API (`com.main.toolimportapi
 
 These files are compiled as embedded resources:
 
-- `models/screwdriver-world.glb`
-- `models/screwdriver-view.glb`
-- `screwdriver-icon.png`
+- `Resources/Models/screwdriver-world.glb`
+- `Resources/Models/screwdriver-view.glb`
+- `Resources/Img/screwdriver-icon.png`
+
+Optional pose files, if added later, belong in:
+
+- `Resources/Poses/*.arm-pose.cs`
 
 ## Build
 
